@@ -1,0 +1,8 @@
+[deploy]
+server1 ansible_host=172.21.240.1 ansible_user=vagrant ansible_become_password=vagrant ansible_port=2224
+
+[managers]
+server2 ansible_host=172.21.240.1 ansible_user=vagrant ansible_become_password=vagrant ansible_port=2225
+server3 ansible_host=172.21.240.1 ansible_user=vagrant ansible_become_password=vagrant ansible_port=2226
+
+[workers]
