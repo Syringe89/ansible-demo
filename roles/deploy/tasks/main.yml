@@ -5,9 +5,7 @@
 
 - name: Deploy services
   include_tasks:
-    file: "../services/{{ item }}/service.yml"
-    apply:
-      tags: "{{ item }}"
+    file: "../services/{{ item.name }}/service.yml"
   vars:
     - name: "{{ item.name }}"
     - version: "{{ item.version }}"

@@ -8,7 +8,7 @@ rmq_default:
   - name: AMQP_HOSTNAME
     value: rmq
 
-registry_name: "localhost:5000/"   
+registry_name: "localhost:5000/"
 
 services:
   - name: api
@@ -23,3 +23,7 @@ services:
 non_build_services:
   - name: rmq
     version: latest
+
+configs:
+  converter:
+    queue: q_imageProcessor
