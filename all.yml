@@ -5,13 +5,14 @@
       tags: preconfig
     - role: build
       tags: build
-    - role: deploy
-      tags: deploy
-    # - swarm_init
+    - role: swarm_init
+      tags: swarm_init
 
 - name: Managers
   hosts: managers
   roles:
     - role: preconfig
       tags: preconfig
-    # - swarm_join
+    - role: swarm_join
+      type: manager
+      tags: swarm_join

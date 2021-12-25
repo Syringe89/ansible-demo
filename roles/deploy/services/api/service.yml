@@ -1,9 +1,6 @@
 - name: "[{{ name }}] Secret configuration"
   include_tasks:
     file: "../secret.yml"
-    apply:
-      tags: "{{ name }}"
-  tags: "{{ name }}"
 
 - name: "[{{ name }}] Deploy service"
   block:
@@ -12,12 +9,12 @@
         name: "{{ name }}"
         image: "{{ registry_name }}{{ name }}:{{ version }}"
         state: present
+        # force_update: true
         networks:
           - "{{ network_name }}"
         publish:
           - mode: ingress
             protocol: tcp
-            published_port: 3002
             target_port: 3000
         secrets:
           - secret_name: "{{ name }}.env"
