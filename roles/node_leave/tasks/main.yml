@@ -1,0 +1,24 @@
+- name: Set node availability to drain
+  community.docker.docker_node:
+    hostname: "{{ node_name }}"
+    availability: drain
+
+- name: Get info on docker host about containers count
+  community.docker.docker_host_info:
+    containers: true
+  register: result
+  retries: 30
+  delay: 2
+  until: "{{ result['host_info']['ContainersRunning'] }} == 0"
+  delegate_to: "{{ node_name }}"
+
+# - name: Debug
+#   debug:
+#     msg: "{{ result['host_info']['ContainersRunning'] }}"
+#     ['host_info']['Containers']
+
+- name: Remove a swarm manager
+  community.docker.docker_swarm:
+    state: present
+    force: true
+  delegate_to: "{{ node_name }}"

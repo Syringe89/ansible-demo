@@ -5,8 +5,13 @@
       tags: preconfig
     - role: build
       tags: build
+    - role: deploy
+      tags: deploy
     - role: swarm_init
       tags: swarm_init
+    - role: node_leave
+      node_name: server1
+      tags: node_leave
 
 - name: Managers
   hosts: managers
@@ -16,3 +21,11 @@
     - role: swarm_join
       type: manager
       tags: swarm_join
+  # post_tasks:
+  #   - name: Clear token's directory
+  #     file:
+  #       path: ./tokens
+  #       state: absent
+  #     ignore_errors: true
+  #     delegate_to: localhost
+  #     tags: swarm_join

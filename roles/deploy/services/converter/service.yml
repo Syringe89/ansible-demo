@@ -9,7 +9,7 @@
         name: "{{ name }}"
         image: "{{ registry_name }}{{ name }}:{{ version }}"
         state: present
-        # force_update: true
+        force_update: true
         networks:
           - "{{ network_name }}"
         secrets:

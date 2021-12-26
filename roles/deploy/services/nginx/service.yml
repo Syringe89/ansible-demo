@@ -13,7 +13,7 @@
         name: "{{ name }}"
         image: "nginx:{{ version }}"
         state: present
-        # force_update: true
+        force_update: true
         networks:
           - "{{ network_name }}"
         publish:
